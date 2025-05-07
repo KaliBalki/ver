@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 18th, Veronica!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Open Sans', sans-serif;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffc0cb, #ffe4e1);
+      color: #fff;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 20px; /* Increased padding for smoother spacing */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    section.hidden {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.7em;
+      color: #fff0f5;
+      text-shadow: 2px 2px #ff69b4;
+    }
+
+    p {
+      font-size: 1.3em;
+      max-width: 80%;
+    }
+
+    .love-glow {
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      color: #fff;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
+      animation: fadeIn 3s ease-in-out infinite alternate;
+    }
+
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url('https://i.imgur.com/YOcC53M.gif');
+      background-repeat: repeat;
+      opacity: 0.3;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.imgur.com/du6B5EL.png');
+      background-repeat: repeat;
+      background-size: contain;
+      opacity: 0.2;
+      animation: floatHearts 30s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes floatHearts {
+      from { background-position: 0 100%; }
+      to { background-position: 0 -100%; }
+    }
+
+    .content {
+      z-index: 1;
+      position: relative;
+    }
+
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff69b4;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2.2em;
+      }
+
+      p {
+        font-size: 1.1em;
+      }
+
+      .music-btn {
+        font-size: 0.9em;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="hearts"></div>
+
+  <audio id="bg-music" loop autoplay>
+    <source src="./how u make me feel.mp3" type="audio/mp3">
+  </audio>
+  <button class="music-btn" onclick="toggleMusic()">🎵 Pause / Play</button>
+
+  <!-- Sections -->
+  <section class="hidden"><div class="content"><h1>Happy 18th, Veronica! 🎉</h1><p>Today’s your day, birthday queen and proud of you 👑</p></div></section>
+  <section class="hidden"><div class="content"><p>You're mean the world and the universe for me bby, you're the main character (sigma hahah) — and I'm obsessed with you so much bby😍</p></div></section>
+  <section class="hidden"><div class="content"><p>I still can't believe I get to call you mine. Like HOW ?? You're perfect and you are the best thing that happened to me in my life 💘</p></div></section>
+  <section class="hidden"><div class="content"><p>Your smile? happiness. Your eyes? universe. You? PERFECT ❤️</p></div></section>
+  <section class="hidden"><div class="content"><p>I just want to spend the rest of my life with you baby and we are forever 💅</p></div></section>
+  <section class="hidden"><div class="content"><p>Enjoy today bae, my love. You deserve a lifetime of happiness (and a thousand kisses 😘)</p></div></section>
+  <section class="hidden"><div class="content"><p>Maybe you find it a shit gift but I tried bae love you so much and hope I brought a smile to your face bby - MY VER VER ❤️</p></div></section>
+
+  <!-- Image slider -->
+  <section class="hidden">
+    <div class="content">
+      <p style="font-size: 1.3em; margin-bottom: 20px;">I’m so proud of you – you've come so far bby 🥹❤️</p>
+      <div class="slider-wrapper" style="position: relative; width: 90%; max-width: 300px; margin: auto; overflow: hidden; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+        <div class="slider" id="slider" style="display: flex; transition: transform 0.5s ease;">
+          <img src="./IMG_8882.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8883.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8885.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8886.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8888.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8892.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8896.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+          <img src="./IMG_8897.jpeg" style="flex: 0 0 100%; padding: 5px; object-fit: cover; height: 250px; border-radius: 12px;" />
+        </div>
+        <button onclick="prevSlide()" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(255,105,180,0.8); color: white; border: none; font-size: 1.5em; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">❮</button>
+        <button onclick="nextSlide()" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(255,105,180,0.8); color: white; border: none; font-size: 1.5em; border-radius: 50%; width: 40px; height: 40px; cursor: pointer;">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="hidden"><div class="content"><div class="love-glow">I love you more than words can say and you are my Everything ❤️</div></div></section>
+  <section class="hidden"><div class="content"><p style="font-size:1.4em;">💌 You’re the most beautiful part of my life – and I’ll keep falling for you, again and again, forever. 💋</p></div></section>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    const slider = document.getElementById('slider');
+    let scrollAmount = 0;
+    const scrollStep = slider.clientWidth;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+    function nextSlide() {
+      scrollAmount = Math.min(scrollAmount + scrollStep, maxScroll);
+      slider.style.transform = `translateX(-${scrollAmount}px)`;
+    }
+
+    function prevSlide() {
+      scrollAmount = Math.max(scrollAmount - scrollStep, 0);
+      slider.style.transform = `translateX(-${scrollAmount}px)`;
+    }
+
+    setInterval(() => {
+      if (scrollAmount >= maxScroll) {
+        scrollAmount = 0;
+      } else {
+        scrollAmount += scrollStep;
+      }
+      slider.style.transform = `translateX(-${scrollAmount}px)`;
+    }, 3000);
+
+    // Scroll reveal with Intersection Observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          entry.target.classList.remove('hidden');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
